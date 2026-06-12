@@ -1,0 +1,73 @@
+# Creates ONE GitHub Issue per day at the start of US-buyer prime time.
+# GitHub emails you the issue automatically (you watch your own repo by
+# default) - that email is your "go online on Fiverr now" reminder.
+#
+# It closes yesterday's reminder so the Issues tab stays clean.
+#
+# 13:00 UTC = 18:00 Pakistan = 09:00 New York (US buyers waking up).
+# Edit the cron line to change the time.
+
+name: Daily Online Reminder
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create daily checklist issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const today = new Date().toISOString().slice(0, 10);
+            const label = "fiverr-reminder";
+
+            // Make sure the label exists (ignore error if it already does)
+            try {
+              await github.rest.issues.createLabel({
+                owner, repo, name: label, color: "1DBF73",
+                description: "Daily Fiverr action checklist",
+              });
+            } catch (e) { /* label already exists */ }
+
+            // Close older reminder issues so only today's stays open
+            const open = await github.rest.issues.listForRepo({
+              owner, repo, state: "open", labels: label, per_page: 50,
+            });
+            for (const issue of open.data) {
+              await github.rest.issues.update({
+                owner, repo, issue_number: issue.number, state: "closed",
+              });
+            }
+
+            const body = [
+              "## US buyer prime time starts now (18:00-02:00 PKT)",
+              "",
+              "- [ ] Open the **Fiverr app** and stay genuinely online (never use auto-online bots - they get accounts banned)",
+              "- [ ] Check **Briefs** and send a custom offer to every relevant one within 30 minutes",
+              "- [ ] Reply to **all** inbox messages (response speed affects your ranking)",
+              "- [ ] Quick look at `data/rank_history.csv` - any keyword newly FOUND?",
+              "- [ ] Share one gig genuinely today (LinkedIn / X / a Lovable or v0 Discord - help someone, then link)",
+              "- [ ] 10 min: open one top-ranked competitor gig and steal one idea (thumbnail, FAQ, package)",
+              "",
+              "**Your gigs:**",
+              "- [AI / vibe-coding gig](https://www.fiverr.com/anas_982/build-ai-powered-web-apps-with-v0-dev-lovable-ai-studio-and-stitch)",
+              "- [React/Next.js bug-fix gig](https://www.fiverr.com/anas_982/quickly-fix-bugs-or-issues-in-your-react-or-nextjs-website)",
+              "- [Full-stack gig](https://www.fiverr.com/anas_982/develop-a-full-stack-website-or-web-app-with-react-nextjs-node-and-django)",
+              "",
+              "_Tick the boxes as you go. This issue closes automatically tomorrow._",
+            ].join("\n");
+
+            await github.rest.issues.create({
+              owner, repo,
+              title: `Fiverr prime-time checklist - ${today}`,
+              labels: [label],
+              body,
+            });

@@ -1,0 +1,38 @@
+{
+  "fiverr_username": "anas_982",
+  "search_pages_to_check": 2,
+  "timezone_note": "All cron times in workflows are UTC. Pakistan = UTC+5.",
+  "gigs": [
+    {
+      "name": "ai-vibe-coding",
+      "url": "https://www.fiverr.com/anas_982/build-ai-powered-web-apps-with-v0-dev-lovable-ai-studio-and-stitch",
+      "keywords": [
+        "lovable app",
+        "v0 dev",
+        "ai web app mvp",
+        "vibe coding",
+        "ai website builder"
+      ]
+    },
+    {
+      "name": "bug-fix",
+      "url": "https://www.fiverr.com/anas_982/quickly-fix-bugs-or-issues-in-your-react-or-nextjs-website",
+      "keywords": [
+        "fix react bugs",
+        "nextjs bug fix",
+        "fix website bugs",
+        "react error fix"
+      ]
+    },
+    {
+      "name": "full-stack",
+      "url": "https://www.fiverr.com/anas_982/develop-a-full-stack-website-or-web-app-with-react-nextjs-node-and-django",
+      "keywords": [
+        "nextjs developer",
+        "react web app",
+        "full stack developer",
+        "django website"
+      ]
+    }
+  ]
+}

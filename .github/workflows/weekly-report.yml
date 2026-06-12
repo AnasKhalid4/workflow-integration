@@ -1,0 +1,61 @@
+# Every Sunday: builds a Markdown report from the week's data, commits it
+# to reports/, and opens it as a GitHub Issue so it lands in your email.
+#
+# 05:00 UTC Sunday = 10:00 Pakistan time Sunday.
+
+name: Weekly Gig Report
+
+on:
+  schedule:
+    - cron: "0 5 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate report
+        run: python scripts/generate_report.py
+
+      - name: Commit report
+        run: |
+          git config user.name "gig-bot"
+          git config user.email "gig-bot@users.noreply.github.com"
+          git add reports/
+          git commit -m "weekly report $(date -u +%F)" || echo "nothing new to commit"
+          git push
+
+      - name: Email the report (as a GitHub Issue)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const { owner, repo } = context.repo;
+            const today = new Date().toISOString().slice(0, 10);
+            let body = "Report file missing - check the workflow logs.";
+            try {
+              body = fs.readFileSync("reports/LATEST.md", "utf8");
+            } catch (e) {}
+            if (body.length > 60000) {
+              body = body.slice(0, 60000) + "\n\n...(truncated - full report in reports/LATEST.md)";
+            }
+            await github.rest.issues.create({
+              owner, repo,
+              title: `Weekly gig report - ${today}`,
+              body,
+            });

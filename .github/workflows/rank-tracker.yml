@@ -1,0 +1,44 @@
+# Runs every day, records where your gigs rank for your keywords,
+# checks every gig is still live, and commits results to data/.
+#
+# Change the schedule below if you want a different time.
+# Cron is in UTC. Pakistan time = UTC+5  (04:30 UTC = 09:30 PKT).
+
+name: Daily Rank Tracker
+
+on:
+  schedule:
+    - cron: "30 4 * * *"   # 09:30 Pakistan time, every day
+  workflow_dispatch: {}     # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Track Fiverr + DuckDuckGo rankings
+        run: python scripts/rank_tracker.py
+
+      - name: Check gigs are live
+        run: python scripts/gig_health_check.py
+
+      - name: Commit results
+        run: |
+          git config user.name "gig-bot"
+          git config user.email "gig-bot@users.noreply.github.com"
+          git add data/
+          git commit -m "rank data $(date -u +%F)" || echo "nothing new to commit"
+          git push
