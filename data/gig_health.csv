@@ -23,3 +23,6 @@ date,gig_name,status,http_code,title_found,rating,reviews
 2026-06-19,ai-vibe-coding,BLOCKED,403,,,
 2026-06-19,bug-fix,BLOCKED,403,,,
 2026-06-19,full-stack,OK,200,yes,0,0
+2026-06-20,ai-vibe-coding,BLOCKED,403,,,
+2026-06-20,bug-fix,BLOCKED,403,,,
+2026-06-20,full-stack,BLOCKED,403,,,
