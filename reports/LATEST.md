@@ -1,8 +1,8 @@
-# Fiverr Gig Report - 2026-10-04
+# Fiverr Gig Report - 2026-10-11
 
 ## 1. Where your gigs rank in Fiverr search
 
-Latest data: **2026-10-04**
+Latest data: **2026-10-11**
 
 | Gig | Keyword | Fiverr search now | ~7 days ago | DuckDuckGo |
 |---|---|---|---|---|
@@ -20,13 +20,13 @@ Latest data: **2026-10-04**
 | full-stack | nextjs developer | blocked | not_found | error |
 | full-stack | react web app | blocked | not_found | error |
 
-_Fiverr blocked the tracker on 104 day(s) (normal for datacenter IPs - those rows say 'blocked')._
+_Fiverr blocked the tracker on 109 day(s) (normal for datacenter IPs - those rows say 'blocked')._
 
 **How to read this:** 'not_found' on page 1-2 means buyers are not seeing you for that keyword - either change the keyword in `config.json` to something less competitive, or improve the gig that targets it. Any FOUND keyword is gold: be online when buyers search.
 
 ## 2. Gig health
 
-Checked: **2026-10-04**
+Checked: **2026-10-11**
 
 | Gig | Live? | Rating | Reviews |
 |---|---|---|---|
