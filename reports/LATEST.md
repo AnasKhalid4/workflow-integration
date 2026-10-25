@@ -1,32 +1,32 @@
-# Fiverr Gig Report - 2026-10-18
+# Fiverr Gig Report - 2026-10-25
 
 ## 1. Where your gigs rank in Fiverr search
 
-Latest data: **2026-10-18**
+Latest data: **2026-10-25**
 
 | Gig | Keyword | Fiverr search now | ~7 days ago | DuckDuckGo |
 |---|---|---|---|---|
-| ai-vibe-coding | ai web app mvp | blocked | blocked | error |
-| ai-vibe-coding | ai website builder | blocked | blocked | error |
-| ai-vibe-coding | lovable app | blocked | blocked | error |
-| ai-vibe-coding | v0 dev | blocked | blocked | error |
-| ai-vibe-coding | vibe coding | blocked | blocked | error |
-| bug-fix | fix react bugs | blocked | blocked | error |
-| bug-fix | fix website bugs | blocked | blocked | error |
-| bug-fix | nextjs bug fix | blocked | blocked | error |
-| bug-fix | react error fix | blocked | blocked | error |
-| full-stack | django website | blocked | blocked | error |
-| full-stack | full stack developer | blocked | blocked | error |
-| full-stack | nextjs developer | blocked | blocked | error |
-| full-stack | react web app | blocked | blocked | error |
+| ai-vibe-coding | ai web app mvp | blocked | not_found | error |
+| ai-vibe-coding | ai website builder | blocked | not_found | error |
+| ai-vibe-coding | lovable app | blocked | not_found | error |
+| ai-vibe-coding | v0 dev | blocked | not_found | error |
+| ai-vibe-coding | vibe coding | blocked | not_found | error |
+| bug-fix | fix react bugs | blocked | not_found | error |
+| bug-fix | fix website bugs | blocked | not_found | error |
+| bug-fix | nextjs bug fix | blocked | not_found | error |
+| bug-fix | react error fix | blocked | not_found | error |
+| full-stack | django website | blocked | not_found | error |
+| full-stack | full stack developer | blocked | not_found | error |
+| full-stack | nextjs developer | blocked | not_found | error |
+| full-stack | react web app | blocked | not_found | error |
 
-_Fiverr blocked the tracker on 113 day(s) (normal for datacenter IPs - those rows say 'blocked')._
+_Fiverr blocked the tracker on 116 day(s) (normal for datacenter IPs - those rows say 'blocked')._
 
 **How to read this:** 'not_found' on page 1-2 means buyers are not seeing you for that keyword - either change the keyword in `config.json` to something less competitive, or improve the gig that targets it. Any FOUND keyword is gold: be online when buyers search.
 
 ## 2. Gig health
 
-Checked: **2026-10-18**
+Checked: **2026-10-25**
 
 | Gig | Live? | Rating | Reviews |
 |---|---|---|---|
